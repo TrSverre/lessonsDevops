@@ -1,0 +1,14 @@
+FROM maven:latest
+RUN apt update
+RUN apt install git -y
+WORKDIR /home/user/
+#RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+#WORKDIR /home/user/boxfuse-sample-java-war-hello
+#RUN mvn package
+#WORKDIR /home/user/boxfuse-sample-java-war-hello/target/
+#RUN cp hello-1.0.war /var/lib/tomcat9/webapps/
+RUN git clone https://github.com/jetty-project/embedded-jetty-live-war
+WORKDIR /home/user/embedded-jetty-live-war
+RUN mvn package
+WORKDIR /home/user/embedded-jetty-live-war/livewar-assembly/target
+RUN cp livewar-example.war /var/www/html

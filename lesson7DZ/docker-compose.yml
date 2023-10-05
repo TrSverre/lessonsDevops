@@ -1,0 +1,20 @@
+---
+version: '3'
+services:
+    assemb:
+        build:
+            context: ./docker
+            dockerfile: dockerfile
+        volumes:
+            - app:/var/www/html
+
+    prods:
+        image: tomcat:8.5-alpine
+        ports:
+            - '8080:8080'
+        volumes:
+            - app:/var/lib/tomcat9/webapps/
+        depends_on:
+            - assemb
+volumes:
+  app:
