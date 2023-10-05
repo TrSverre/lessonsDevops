@@ -13,7 +13,8 @@ services:
         ports:
             - '8080:8080'
         volumes:
-            - app:/var/lib/tomcat9/webapps/
+            - app:/usr/local/tomcat/webapps/
+            #- app:/var/lib/tomcat9/webapps/
         depends_on:
             - assemb
 volumes:
